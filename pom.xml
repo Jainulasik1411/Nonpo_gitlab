@@ -10,9 +10,10 @@
     <name>Nonpo_regression</name>
     <url>http://maven.apache.org</url>
 
+    <!-- Updated Java version to 17 -->
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -31,19 +32,20 @@
             <version>7.10.2</version>
             <scope>test</scope>
         </dependency>
-        
-        <dependency>
-    <groupId>com.aventstack</groupId>
-    <artifactId>extentreports</artifactId>
-    <version>5.0.9</version>
-</dependency>
 
-<!-- Optional: ExtentReports Adapter for TestNG -->
-<dependency>
-    <groupId>com.aventstack</groupId>
-    <artifactId>extentreports-testng-adapter</artifactId>
-    <version>1.2.0</version>
-</dependency>
+        <!-- ExtentReports -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>5.0.9</version>
+        </dependency>
+
+        <!-- ExtentReports TestNG adapter -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports-testng-adapter</artifactId>
+            <version>1.2.0</version>
+        </dependency>
 
         <!-- WebDriverManager -->
         <dependency>
@@ -95,7 +97,7 @@
                         <urlToBeTested>${urlToBeTested}</urlToBeTested>
                     </systemPropertyVariables>
 
-                    <!-- Optional: make Surefire fail build on skipped or failed tests -->
+                    <!-- Optional: fail build if tests fail -->
                     <testFailureIgnore>false</testFailureIgnore>
                 </configuration>
             </plugin>
