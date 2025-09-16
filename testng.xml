@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="1" name="Test">
+    <classes>
+       <class name="org.Nonpo.Nonpo_Process_BranchFlow1"/>
+      <class name="org.Nonpo.Nonpo_Process_lineitemstable"/>
+      <class name="org.Nonpo.Nonpo_Process_Functional_Withdraw_deny_Reject_Flow2"/>
+      <class name="org.Nonpo.Nonpo_Process3"/>
+      <class name="org.Nonpo.Nonpo_Process_BranchFlow123"/>
+      <class name="org.Nonpo.Nonpo_Process_Functional"/>
+      <class name="org.Nonpo.Nonpo_Process_Branch_Withdraw_deny_Reject_Flow2"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
