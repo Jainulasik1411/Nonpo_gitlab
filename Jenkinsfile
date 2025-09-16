@@ -22,4 +22,15 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh "mvn test -Dsurefire.suiteXmlFiles=te
+                sh "mvn test -Dsurefire.suiteXmlFiles=testng.xml"
+            }
+        }
+    }
+
+    post {
+        always {
+            // Publish TestNG/JUnit results
+            junit 'target/surefire-reports/*.xml'
+        }
+    }
+}
