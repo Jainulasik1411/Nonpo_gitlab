@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         maven 'MAVEN_HOME'   // Jenkins Maven installation name
-        jdk 'JDK17'          // Jenkins JDK installation name
+        jdk 'jdk 21'          // Use the JDK installed in Jenkins
     }
 
     stages {
@@ -22,14 +22,11 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh "mvn test"
+                sh "mvn test -Dsurefire.suiteXmlFiles=testng.xml"
             }
         }
     }
 
     post {
         always {
-            junit 'target/surefire-reports/*.xml'   // Publish TestNG/JUnit results
-        }
-    }
-}
+
