@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/your-username/Nonpo_regression.git'
+                    url: 'https://github.com/Asik14/Nonpo_regression.git'
             }
         }
 
@@ -22,4 +22,14 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh "mvn tes
+                sh "mvn test"
+            }
+        }
+    }
+
+    post {
+        always {
+            junit 'target/surefire-reports/*.xml'   // Publish TestNG/JUnit results
+        }
+    }
+}
