@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         maven 'MAVEN_HOME'   // Jenkins Maven installation name
-        jdk 'jdk 21'          // Use the JDK installed in Jenkins
+        jdk 'jdk 21'         // Use the JDK installed in Jenkins
     }
 
     stages {
@@ -22,11 +22,4 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh "mvn test -Dsurefire.suiteXmlFiles=testng.xml"
-            }
-        }
-    }
-
-    post {
-        always {
-
+                sh "mvn test -Dsurefire.suiteXmlFiles=te
