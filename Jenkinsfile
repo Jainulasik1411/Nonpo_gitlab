@@ -1,9 +1,9 @@
 pipeline {
-    agent any
+    agent { label 'jdk21-node' }   // run on the agent with JDK21 installed
 
     tools {
-        maven 'MAVEN_HOME'   // Jenkins Maven installation name
-        jdk 'jdk 21'         // Use the JDK installed in Jenkins
+        maven 'MAVEN_HOME'
+        jdk 'jdk21'
     }
 
     stages {
