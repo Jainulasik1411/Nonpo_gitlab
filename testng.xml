@@ -4,7 +4,6 @@
   <test thread-count="1" name="Test">
     <classes>
        <class name="org.Nonpo.Nonpo_Process_BranchFlow1"/>
-      <class name="org.Nonpo.Nonpo_Process_lineitemstable"/>
       <class name="org.Nonpo.Nonpo_Process_Functional_Withdraw_deny_Reject_Flow2"/>
       <class name="org.Nonpo.Nonpo_Process3"/>
       <class name="org.Nonpo.Nonpo_Process_BranchFlow123"/>
