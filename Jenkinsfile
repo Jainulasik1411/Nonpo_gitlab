@@ -1,16 +1,15 @@
 pipeline {
-    agent { label 'jdk21-node' }   // run on the agent with JDK21 installed
+    agent any
 
     tools {
-        maven 'MAVEN_HOME'
-        jdk 'jdk21'
+        jdk 'Java 21'       // Must match exactly the JDK name in Jenkins
+        maven 'MAVEN_HOME'  // Must match exactly the Maven name in Jenkins
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/Asik14/Nonpo_regression.git'
+                git branch: 'main', url: 'https://github.com/Asik14/Nonpo_regression.git'
             }
         }
 
@@ -22,15 +21,21 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh "mvn test -Dsurefire.suiteXmlFiles=testng.xml"
+                sh "mvn test"
+                junit '**/target/surefire-reports/*.xml' // Publish test reports
+            }
+        }
+
+        stage('Deploy to AWS') {
+            when {
+                expression { return false } // Set to true when you want to deploy
+            }
+            steps {
+                echo "Add AWS deployment commands here"
             }
         }
     }
 
     post {
         always {
-            // Publish TestNG/JUnit results
-            junit 'target/surefire-reports/*.xml'
-        }
-    }
-}
+            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
