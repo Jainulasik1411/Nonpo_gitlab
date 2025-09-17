@@ -27,11 +27,11 @@ pipeline {
         }
 
         stage('Deploy to AWS') {
-            when {
-                expression { return false } // Set to true when you want to deploy
-            }
             steps {
-                echo "Add AWS deployment commands here"
+                echo "Deploying to AWS..."
+                // Example AWS command (replace with your actual deployment commands)
+                // sh "aws s3 cp target/yourapp.jar s3://your-bucket/"
+                // sh "aws ecs update-service --cluster your-cluster --service your-service --force-new-deployment"
             }
         }
     }
@@ -39,3 +39,15 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
+            cleanWs()
+        }
+
+        success {
+            echo "Pipeline succeeded! 🎉"
+        }
+
+        failure {
+            echo "Pipeline failed! ❌"
+        }
+    }
+}
