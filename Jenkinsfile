@@ -1,10 +1,9 @@
 pipeline {
     agent any
-
-    tools {
-        jdk 'Java 21'       // Must match exactly the JDK name in Jenkins
-        maven 'MAVEN_HOME'  // Must match exactly the Maven name in Jenkins
-    }
+tools {
+    jdk 'JAVA_HOME'       // must match the Name from Jenkins
+    maven 'MAVEN_HOME'    // make sure Maven name also exists
+}
 
     stages {
         stage('Checkout') {
