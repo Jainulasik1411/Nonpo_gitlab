@@ -1,9 +1,10 @@
 pipeline {
     agent any
-tools {
-    jdk 'JAVA_HOME'       // must match the Name from Jenkins
-    maven 'MAVEN_HOME'    // make sure Maven name also exists
-}
+
+    tools {
+        jdk 'JAVA_HOME'       // must match the Name from Jenkins
+        maven 'MAVEN_HOME'    // must match the Name from Jenkins
+    }
 
     stages {
         stage('Checkout') {
@@ -14,13 +15,13 @@ tools {
 
         stage('Build') {
             steps {
-                sh "mvn clean install -DskipTests"
+                bat "mvn clean install -DskipTests"
             }
         }
 
         stage('Test') {
             steps {
-                sh "mvn test"
+                bat "mvn test"
                 junit '**/target/surefire-reports/*.xml' // Publish test reports
             }
         }
@@ -28,9 +29,9 @@ tools {
         stage('Deploy to AWS') {
             steps {
                 echo "Deploying to AWS..."
-                // Example AWS command (replace with your actual deployment commands)
-                // sh "aws s3 cp target/yourapp.jar s3://your-bucket/"
-                // sh "aws ecs update-service --cluster your-cluster --service your-service --force-new-deployment"
+                // Example AWS commands (replace with your actual deployment steps)
+                // bat "aws s3 cp target/yourapp.jar s3://your-bucket/"
+                // bat "aws ecs update-service --cluster your-cluster --service your-service --force-new-deployment"
             }
         }
     }
