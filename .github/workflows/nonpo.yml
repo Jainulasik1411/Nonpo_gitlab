@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest   # free Linux runner provided by GitHub
+    runs-on: windows-latest   # free Windows runner provided by GitHub
 
     steps:
       - name: Checkout Code
