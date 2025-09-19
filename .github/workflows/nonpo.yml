@@ -1,1 +1,26 @@
+name: Nonpo Regression Automation
+
+on:
+  push:
+    branches:
+      - main   # Trigger only when code is pushed to main branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest   # free Linux runner provided by GitHub
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+
+      - name: Build with Maven
+        run: mvn clean install -DskipTests=true
+
+      - name: Run TestNG Tests
+        run: mvn test
 
