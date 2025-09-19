@@ -30,7 +30,7 @@ jobs:
         uses: nanasess/setup-chromedriver@v2
 
       - name: Run TestNG Tests
-        run: mvn -Dsurefire.suiteXmlFiles=testng.xml test
+        run: mvn clean test -DsuiteXmlFile=testng.xml
 
       - name: Upload TestNG Reports
         uses: actions/upload-artifact@v4
