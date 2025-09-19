@@ -17,7 +17,8 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'temurin'   # 🔥 Required (AdoptOpenJDK)
+          distribution: 'temurin'
+          cache: maven
 
       - name: Build with Maven
         run: mvn clean install -DskipTests=true
@@ -30,3 +31,9 @@ jobs:
 
       - name: Run TestNG Tests
         run: mvn test -Dsurefire.suiteXmlFiles=testng.xml
+
+      - name: Upload TestNG Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: testng-reports
+          path: target/surefire-reports
