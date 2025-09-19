@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    runs-on: windows-latest   # free Windows runner provided by GitHub
+    runs-on: windows-latest   # using Windows runner
 
     steps:
       - name: Checkout Code
@@ -17,10 +17,10 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
+          distribution: 'temurin'   # 🔥 Required (AdoptOpenJDK)
 
       - name: Build with Maven
         run: mvn clean install -DskipTests=true
 
       - name: Run TestNG Tests
         run: mvn test
-
