@@ -1,16 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
+<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>Nonpo</groupId>
     <artifactId>Nonpo_regression</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Nonpo_regression</name>
     <url>http://maven.apache.org</url>
 
-    <!-- Updated Java version to 17 -->
+    <!-- Java version -->
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -25,6 +26,16 @@
             <version>4.25.0</version>
         </dependency>
 
+        <!-- Selenium DevTools for Chrome (closest match v139) -->
+     
+
+        <!-- SLF4J Logger -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.9</version>
+        </dependency>
+
         <!-- TestNG -->
         <dependency>
             <groupId>org.testng</groupId>
@@ -32,13 +43,14 @@
             <version>7.10.2</version>
             <scope>test</scope>
         </dependency>
-        
+
+        <!-- Lombok -->
         <dependency>
-    <groupId>org.projectlombok</groupId>
-    <artifactId>lombok</artifactId>
-    <version>1.18.28</version>
-    <scope>provided</scope>
-</dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.28</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- ExtentReports -->
         <dependency>
@@ -47,7 +59,7 @@
             <version>5.0.9</version>
         </dependency>
 
-        <!-- ExtentReports TestNG adapter -->
+        <!-- ExtentReports TestNG Adapter -->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports-testng-adapter</artifactId>
@@ -73,7 +85,7 @@
             <version>5.2.5</version>
         </dependency>
     </dependencies>
-
+    
     <build>
         <plugins>
             <!-- Compiler plugin -->
@@ -90,10 +102,15 @@
             <!-- Surefire plugin for TestNG -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                
                 <artifactId>maven-surefire-plugin</artifactId>
+                
                 <version>3.2.5</version>
                 <configuration>
-                    <!-- Use TestNG suite -->
+                            <argLine>-Djava.util.logging.config.file=src/test/resources/logging.properties</argLine>
+
+                    <!-- Point to TestNG suite -->
+
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
@@ -104,7 +121,7 @@
                         <urlToBeTested>${urlToBeTested}</urlToBeTested>
                     </systemPropertyVariables>
 
-                    <!-- Optional: fail build if tests fail -->
+                    <!-- Fail build if tests fail -->
                     <testFailureIgnore>false</testFailureIgnore>
                 </configuration>
             </plugin>
