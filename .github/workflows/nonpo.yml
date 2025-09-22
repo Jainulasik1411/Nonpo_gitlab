@@ -34,9 +34,10 @@ jobs:
       - name: Set up ChromeDriver
         uses: nanasess/setup-chromedriver@v2
 
-      # 6️⃣ Run TestNG tests using repo XML (single class)
+      # 6️⃣ Run TestNG tests using repo XML (single class) — Windows fix applied
       - name: Run TestNG Tests
-        run: mvn clean test -DsuiteXmlFile=src/test/resources/reo_testng.xml
+        shell: cmd
+        run: mvn.cmd clean test -DsuiteXmlFile=src/test/resources/reo_testng.xml
 
       # 7️⃣ Upload Surefire/TestNG reports for review
       - name: Upload TestNG Reports
